@@ -1,0 +1,205 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\newtheorem{definition}{Definition}
+\newtheorem{claim}{Claim}
+\newtheorem{theorem}{Theorem}
+\usepackage{setspace}
+\usepackage[hyphens]{url}
+\newtheorem{example}{Example}
+\newtheorem{condition}{Condition}
+\newtheorem{proposition}{Proposition}
+\usepackage{graphicx}
+
+\definecolor{mygreen}{RGB}{0,150,0}
+\newtheorem{lemma}{Lemma}
+\usepackage{color}
+\usepackage{calrsfs}
+\usepackage{latexsym}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\usepackage{ulem}
+\def\st{\noindent}
+\renewcommand\em{\it}
+\renewcommand\emph{\textit}
+\newcommand\red[1]{{\color{red}#1}}
+\newcommand\blue[1]{{\color{blue}#1}}
+\newcommand\green[1]{{\color{mygreen}#1}}
+\newcommand\cancelr[1]{{\color{red}\sout{#1}}}
+\newcommand\cancelg[1]{{\color{mygreen}\sout{#1}}}
+%\newcommmand{\red}[1]{\textcolor{red}{#1}}
+%\renewcommand\red[1]{{\color{red}#1}}
+%opening
+\title{}
+\author{}
+\def\no{{ not}\;}
+\begin{document}
+\begin{definition}
+{\rm
+Let $R$ be a binary relation on a set $S$. We say that $R^+$ is the reflexive transitive closure of $R$
+ if the following conditions are satisfied: 
+\begin{enumerate}
+\item $R \subseteq R^+$ and 
+\item for every transitive reflexive relation $R^*$ such that $R \subseteq R^*$, we have $R^+ \subseteq R^*$ and
+\item \red{$R^+$ is reflexive and transitive.} 
+\end{enumerate}
+}
+\hfill $\Box$   
+\end{definition}
+
+\begin{theorem}
+{\rm
+Let $R$ be a binary relation on a a set $S$.
+Let $R^@$ be another binary relation on $S$ such that for every $A,B \in S$ we have $R^@(A,B)$ iff there exists a sequence $C_1,\ldots,C_n$ of elements of $S$ such that 
+\begin{enumerate}
+\item $C_1 = A$
+\item $C_n = B$
+\item for every $i \in \{1..n-1\}$, $R(C_i, C_{i+1})$
+\end{enumerate} 
+We have:
+$$ R^@ = R^+$$
+\hfill $\Box$
+}
+\end{theorem}
+\begin{proof}
+We first show
+\begin{equation}\label{eqr1}
+R\subseteq R^@
+\end{equation}
+Indeed, suppose $(A,B) \in R$. Then we have a two-element sequence $C_1 = A, C_2 = B$ such that $(C_1,C_2) \in R$. Thus, by definition of $R^@$, $(A,B) \in R^@$.
+
+\noindent
+Next, we show
+
+\begin{equation}\label{eqr2}
+R^@ \mbox{ is reflexive}
+\end{equation}
+
+\noindent
+Indeed, consider an element  $A \in S$. Then we have a sequence consisting of one element, $C_1 = A$. It is easy to see that conditions 1-3 of the definition of $R^@$ are satisfied for the pair $(A,A)$.
+Therefore, $R^@(A,A)$ holds for every $A \in S$ and we have (\ref{eqr2}). 
+
+\noindent
+Next we show 
+\begin{equation}\label{eqr3}
+R^@ \mbox{ is transitive}
+\end{equation}
+
+\noindent
+Let $A,B,C$ be three elements of $S$ (not necessarily distinct) such that 
+
+\begin{equation}\label{eqa1}
+R^@(A,B)
+\end{equation}
+and
+\begin{equation}\label{eqa2}
+R^@(B,C)
+\end{equation}
+To prove (\ref{eqr2}), it is sufficent to show
+
+\begin{equation}\label{eqa3}
+R^@(A,C)
+\end{equation}
+From (\ref{eqa1}), by definition of $R^@$, there exists a sequence $C^1_1,\ldots,C_n^1$ of elements of $S$ such that
+\begin{equation}\label{boo}
+C^1_1 = A
+\end{equation}
+\begin{equation}
+C^1_n = B
+\end{equation}
+\begin{equation}
+\mbox{for every $i \in \{1..n-1\}$,} R(C^1_i,C^1_{i+1})
+\end{equation}
+
+From (\ref{eqa2}), by definition of $R^@$, there exists a sequence $C^2_1,\ldots,C_m^2$ of elements of $S$ such that
+\begin{equation}
+C^2_1 = B
+\end{equation}
+\begin{equation}
+C^2_m = C
+\end{equation}
+\begin{equation}\label{boon}
+\mbox{for every $i \in \{1..m-1\}$,} R(C^2_i,C^2_{i+1})
+\end{equation}
+
+\noindent
+Consider the sequence $D  = C^1_1,\ldots,C^1_n,\ldots,C^2_m $.
+It is easy to check using (\ref{boo}) - (\ref{boon})  that $D$ satisfies conditions from the definition of $R^@$ for the pair $(A,C)$. Therefore, (\ref{eqa3}) holds and $R^@$ is transitive. 
+Therefore, from (\ref{eqr1}) - (\ref{eqr3}), $R^@$ is a reflexive transitive relation containing $R$. By definition of $R^+$, we must have:
+
+\begin{equation}\label{slr}
+R^+ \subseteq R^@
+\end{equation}
+
+\noindent
+We next show
+\begin{equation}\label{srl}
+R^@ \subseteq R^+
+\end{equation}
+
+Let $(A,B) \in R^@$. Then, by definition of $R^@$, there exists a sequence $C_1,\ldots,C_k$ of elements of $S$ such that 
+ 
+\begin{equation}
+C_1 = A
+\end{equation}
+\begin{equation}
+C_k = B
+\end{equation}
+\begin{equation}\label{boon1}
+\mbox{for every $i \in \{1..k-1\}$,} R(C_i,C_{i+1})
+\end{equation}
+
+We prove the following:
+\begin{equation}\label{ind}
+R^+(C_1,C_r) \mbox{ for every $r\in\{1,\ldots,k\}$}
+\end{equation}
+
+We prove (\ref{ind}) by induction on $r$.
+\begin{itemize}
+\item[\textbf{Base Case}] For $r = 1$, $R^+(C_1,C_1)$ holds because $R^+$ is a reflexive relation on $S$ by \red{clause 3 of the definition}.
+\item[\textbf{Induction Hypothesis}] Suppose $R^+(C_1,C_l)$ for some $l \in\{1..k-1\}$
+\item[\textbf{Inductive Step}] We need to show 
+\begin{equation}
+R^+(C_1,C_{l+1})
+\end{equation} 
+From (\ref{boon1}) we have 
+\begin{equation}\label{tr1}
+R^+(C_l, C_{l+1})
+\end{equation}
+ By inductive hypothesis, we have:
+\begin{equation}\label{tr2}
+R^+(C_1,C_l)
+\end{equation}
+Since $R^+$ is a transitive relation by \red{clause 3 of the definition}, from (\ref{tr1}) and (\ref{tr2}) we have:
+\begin{equation}
+R^+(C_1,C_{l+1})
+\end{equation}
+
+\end{itemize}
+
+Therefore, (\ref{ind}) holds, and, in particular, we have
+\begin{equation}
+R^+(C_1, C_k)
+\end{equation}
+Therefore, (\ref{srl}) holds. From (\ref{srl}) and (\ref{slr}) we have
+$$R^@ = R^+$$ which concludes the proof.
+
+\end{proof}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

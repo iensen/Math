@@ -1,0 +1,5 @@
+# Latex Aux. fules
+*.aux
+*.out
+*.log
+*.synctex.gz
