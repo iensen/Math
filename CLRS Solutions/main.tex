@@ -1,0 +1,67 @@
+\documentclass[letterpaper, 11pt]{article}
+
+\usepackage{amsmath, amsthm, latexsym, amssymb, graphicx, bold-extra, mathrsfs, frcursive}
+\usepackage[pdftex]{color}
+\usepackage[T1]{fontenc}
+
+% Simplifies margin settings
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Puts list item indicators in bold; makes flush with previous margin
+\renewcommand\labelenumi{\bf\theenumi.}
+\renewcommand\labelenumii{\bf\theenumii.}
+% setlength\leftmargini{1.4em}
+\setlength\leftmarginii{1.4em}
+
+% Flexibility for headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhf{} %clear all header and footer fields
+\lhead{\bf \small Probability and Statistics \hspace*{\fill} Page \thepage}
+\headsep 0.2in
+\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\parindent 0in
+\parskip 10pt
+\setlength{\headheight}{20pt}
+
+\title{CLRS Problem  12-4b Solution}
+
+\begin{document}
+
+%=======================================
+
+\begin{center}
+\Large \bf CLRS 3-ed, Page 306, Problem 12-4b
+
+\large Evgenii Balai
+\end{center}
+
+\textbf{Problem Statement}\\
+Show that  $B(x) =x B(x) ^2 +1$
+
+\bigskip
+
+\textbf{Solution}\\
+\begin{align*}
+B(X) &= \displaystyle\sum_{n=0}^{\infty}b_{n}x^n\\
+     &=b_0 + \displaystyle\sum_{n=1}^{\infty}b_{n}x^n\\
+     &=b_0+x\displaystyle\sum_{n=1}^{\infty}\displaystyle\sum_{k=0}^{n-1}b_kb_{n-k-1}x^{n-1}\\
+     &=b_0+x\displaystyle\sum_{n=0}^{\infty}\displaystyle\sum_{k=0}^{n}b_kb_{n-k}x^{n}\\ 
+     &=b_0+x\displaystyle\sum_{n=0}^{\infty}b_nx_n \cdot \sum_{n=0}^{\infty}b_nx_n \mbox{~(check this by computing the coefficient for every term $x^i$)}\\
+     &=b_0 +x B(X)^2\\
+     &=1 + xB(X)^2\\
+\end{align*}
+
+
+
+
+
+\clearpage
+
+%=======================================
+
+\end{document}
